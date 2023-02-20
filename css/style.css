@@ -132,8 +132,8 @@ p {
 
 
 .btn.btn-fundo:hover {
-  color: #000;
-  border-color: #000;
+  color: #FA7F08;
+  border-color: #FA7F08;
 }
 
 
@@ -187,4 +187,16 @@ p {
   margin-bottom: 20px;
 }
 
+
+.btn-fundo {
+  
+  border: 3px solid #011F26;;
+  padding: 10px 30px;
+  color: #011F26;;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: .1em;
+}
 
