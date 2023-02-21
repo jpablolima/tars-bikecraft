@@ -43,6 +43,22 @@ img {
   z-index: 10;
 }
 
+.logo-img {
+  max-width: 150px;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+}
+
+
+.logo-img-2 {
+  max-width: 200px;
+  max-height: 123px;
+  width: auto;
+  height: auto;
+}
+
+
 .header_menu {
   text-align: right;
 }
@@ -243,7 +259,7 @@ img {
   display: block;
   background: url("../img/linhas.svg") no-repeat center;
   position: absolute;
-  top: 189px;
+  top: 180px;
   right: 162px;
   z-index: -1;
 } 
