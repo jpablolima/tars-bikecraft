@@ -15,8 +15,9 @@ jobs:
       - name: CreatePull Request
         uses: peter-evans/create-pull-request@v4
         with:
+          token: ${{ secrets.GIT_TOKEN  }}
           commit-message: update authors
           title: Update AUTHORS
           body: Credit new contributors by updating AUTHORS
           branch: main
-          base: main
+          
