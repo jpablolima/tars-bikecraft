@@ -12,14 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         
-          
-      - name: Update AUTHORS
-        run: |
-          git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
-      - name: Pull Request
+      - name: CreatePull Request
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: update authors
           title: Update AUTHORS
           body: Credit new contributors by updating AUTHORS
           branch: main
+          base: main
