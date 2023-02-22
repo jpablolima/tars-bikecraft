@@ -7,7 +7,7 @@ on:
     branches:
       - main
 jobs:
-  updateAuthors:
+  CreatePullRequest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -25,10 +25,11 @@ jobs:
       
         with:
           token: ${{ secrets.GIT_TOKEN  }}
-          commit-message: update authors
+          commit-message: Create Pull Request
           title: Update Tars Bike Craft
           body:  Update Tars Bike Craft
           branch: main
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com> }}
         
       - name: Checkout Outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
