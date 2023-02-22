@@ -26,7 +26,6 @@ jobs:
       
       - name: Checkout Outputs
         id: cpr
-        uses: peter-evans/create-pull-request@v4
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
