@@ -21,8 +21,8 @@ jobs:
       - name: CreatePull Request
         uses: peter-evans/create-pull-request@v4
       
-      - name:
-        if: ${{ steps.cpr.outputs.pull-request-number }}
+      - name: Checkout Outputs
+         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
