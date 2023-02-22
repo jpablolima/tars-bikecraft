@@ -11,13 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        
+        with:
+          fetch-depth: 0
+      
+      - name: Authors
+        run: |
+          git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
+      
       - name: CreatePull Request
         uses: peter-evans/create-pull-request@v4
+      
+      - name:
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+        
         with:
           token: ${{ secrets.GIT_TOKEN  }}
           commit-message: update authors
-          title: Update AUTHORS
-          body: Credit new contributors by updating AUTHORS
+          title: Update Tars Bike Craft
+          body:  Update Tars Bike Craft
           branch: main
           
