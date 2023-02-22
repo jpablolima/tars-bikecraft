@@ -16,7 +16,7 @@ jobs:
       - name: Update AUTHORS
         run: |
           git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
-      - name: Create Pull Request
+      - name: Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: update authors
