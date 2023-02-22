@@ -2,7 +2,7 @@ name: Create Pull Request
 on:
   push:
     branches:
-      - feature
+      - main
 jobs:
   updateAuthors:
     runs-on: ubuntu-latest
@@ -14,9 +14,9 @@ jobs:
         run: |
           git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
       - name: Create Pull Request
-        uses: jpablolima/create-pull-request@v4
+        uses: jpablolima/tars-bikecraft@v4
         with:
           commit-message: update authors
           title: Update AUTHORS
-          body: Pull Request
-          branch: main
+          body: Credit new contributors by updating AUTHORS
+          branch: update-authors
