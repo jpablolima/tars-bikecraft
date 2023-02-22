@@ -32,7 +32,8 @@ jobs:
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
                  
       
-  build:
+  buildDeployDockerHub:
+  
     runs-on: ubuntu-latest
     steps:
       - 
@@ -51,5 +52,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME  }}/apache2:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME  }}/apache2tarsbikecraft:latest
 
