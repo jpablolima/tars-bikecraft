@@ -2,7 +2,7 @@ name: Create Pull Request
 on:
   push:
     branches:
-      - main
+      - feature 
 jobs:
   updateAuthors:
     runs-on: ubuntu-latest
@@ -19,4 +19,4 @@ jobs:
           commit-message: update authors
           title: Update AUTHORS
           body: Credit new contributors by updating AUTHORS
-          branch: update-authors
+          branch: main
