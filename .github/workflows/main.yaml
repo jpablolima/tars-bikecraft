@@ -27,8 +27,7 @@ jobs:
           body:  Update Tars Bike Craft
           branch: main
       
-      - name: Checkout Outputs
-        if: ${{ steps.cpr.outputs.pull-request-number }}
+      - name: Check Outputs
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
