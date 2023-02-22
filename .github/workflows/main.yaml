@@ -16,6 +16,7 @@ jobs:
           fetch-depth: 0
       
       - name: CreatePull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GIT_TOKEN  }}
@@ -27,7 +28,6 @@ jobs:
           branch: main
       
       - name: Checkout Outputs
-        id: cpr
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
