@@ -19,7 +19,7 @@ jobs:
           git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
       
       - name: CreatePull Request
-        id: crp
+        id: cpr
         uses: peter-evans/create-pull-request@v4
 
       
