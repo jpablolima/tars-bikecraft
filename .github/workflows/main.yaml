@@ -19,6 +19,11 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
 
+      - name: Checkout Outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
       
         with:
           token: ${{ secrets.GIT_TOKEN  }}
@@ -28,8 +33,4 @@ jobs:
           branch: main
            
         
-      - name: Checkout Outputs
-        if: ${{ steps.cpr.outputs.pull-request-number }}
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+
