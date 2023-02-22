@@ -18,7 +18,7 @@ WORKDIR /var/www/html
 
 VOLUME [ "/var/www/html" ]
 
-EXPOSE 80
+  EXPOSE 80
 
 ENTRYPOINT [ "/usr/sbin/apache2ctl" ]
 CMD [ "-D", "FOREGROUND" ]

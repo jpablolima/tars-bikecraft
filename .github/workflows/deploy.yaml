@@ -1,0 +1,24 @@
+name: Create Pull Request
+
+on: 
+  push:
+    branches:
+      - "main"
+jobs:
+  updateAuthors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name:  UpdateAuthors
+        run: |
+           git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
+      - name: Create Pull Request
+        uses: jpablolima/create-pull-request@v4
+        with:
+          commit-message: update authors
+          title: Update Authors
+          body: Update 
+          branch: update-authors
+
