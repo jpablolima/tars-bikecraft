@@ -14,7 +14,7 @@ jobs:
         run: |
           git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
       - name: Create Pull Request
-        uses: jpablolima/tars-bikecraft@v4
+        uses: jpablolima/tars-bikecraf
         with:
           commit-message: update authors
           title: Update AUTHORS
