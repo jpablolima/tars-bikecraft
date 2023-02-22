@@ -32,7 +32,6 @@ jobs:
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
                  
       
-jobs:
   build:
     runs-on: ubuntu-latest
     steps:
