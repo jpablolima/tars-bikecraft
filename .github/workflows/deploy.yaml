@@ -19,4 +19,4 @@ jobs:
           commit-message: update authors
           title: Update AUTHORS
           body: Pull Request
-          branch: update-authors
+          branch: main
