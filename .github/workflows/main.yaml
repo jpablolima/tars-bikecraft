@@ -31,8 +31,8 @@ jobs:
         with:
           token: ${{ secrets.GIT_TOKEN  }}
           commit-message: Create Pull Request
-          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }}
-          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }}
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: Update Tars Bike Craft
           body:  Update Tars Bike Craft
           branch: main
