@@ -9,7 +9,11 @@ on:
       - main
 jobs:
   CreatePullRequest:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+          runner: [ ubuntu-latest, windows-latest ]
+    runs-on: ${{  matrix.runner }}
     steps:
       - uses: actions/checkout@v3
               
