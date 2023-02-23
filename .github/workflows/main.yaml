@@ -23,7 +23,7 @@ jobs:
       - name: Update author information 
         run: | 
       
-          echo " - ${{ env.GIT_COMMIT_COMMITTER_NAME }}"
+          echo " ${{ env.GIT_COMMIT_AUTHOR_NAME }}  "
 
       - name: CreatePull Request
         id: cpr
@@ -31,8 +31,8 @@ jobs:
         with:
           token: ${{ secrets.GIT_TOKEN  }}
           commit-message: Create Pull Request
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }}
+          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }}
           title: Update Tars Bike Craft
           body:  Update Tars Bike Craft
           branch: main
