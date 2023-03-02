@@ -1,6 +1,7 @@
 .interna-sobre {
     background: url("../img/bg-sobre.jpg") no-repeat center;
     background-size: cover;
+<<<<<<< HEAD
 }
 
 .missao-sobre {
@@ -23,4 +24,6 @@
 
 .foto-equipe {
     padding-top: 40px;
+=======
+>>>>>>> 5e798f0 (página sobre)
 }

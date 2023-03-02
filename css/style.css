@@ -33,11 +33,17 @@ img {
 }
 
 
+<<<<<<< HEAD
 /* introdução interna  */
+=======
+/* Introdução interna  */
+
+>>>>>>> 5e798f0 (página sobre)
 .introducao-interna {
   width: 100%;
   margin-top: 92px;
   height: 160px;
+<<<<<<< HEAD
   text-align: center;
   color: #FFF;
 }
@@ -57,6 +63,8 @@ img {
   height: 3px;
   background: #FFF;
   margin: 14px auto 10px auto;
+=======
+>>>>>>> 5e798f0 (página sobre)
 }
 
 /* header */
