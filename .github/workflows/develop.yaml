@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      # - name: Expose git commit data
-      #   uses: rlespinasse/git-commit-data-action@v1
+      - name: Expose git commit data
+        uses: rlespinasse/git-commit-data-action@v1
       
       - name: Create Pull Request
         id: cpr
@@ -31,7 +31,7 @@ jobs:
           branch: feature
       
       - name: Check Outputs
-        if: ${{ steps.cpr.outputs.pull-request-number }}
+        # if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
@@ -40,7 +40,7 @@ jobs:
    
                  
       - name: Create or Update Project Card
-        if: ${{ steps.cpr.outputs.pull-request-number }}
+        # if: ${{ steps.cpr.outputs.pull-request-number }}
         uses: peter-evans/create-or-update-project-card@v2
         with:
            project-name: TarsBikeCraft
