@@ -18,8 +18,6 @@ jobs:
       - name: Expose git commit data
         uses: rlespinasse/git-commit-data-action@v1
       
-        
-
       - name: CreatePull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
@@ -30,7 +28,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: Update Tars Bike Craft
           body:  Update Tars Bike Craft
-          # branch: feature
+          branch: feature
       
       - name: Check Outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
