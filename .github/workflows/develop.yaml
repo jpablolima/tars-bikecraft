@@ -35,8 +35,7 @@ jobs:
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-operation }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-pull-request-head-sha }}"
+   
                  
       # - name: Create or Update Project Card
       #   # if: ${{ steps.cpr.outputs.pull-request-number }}
