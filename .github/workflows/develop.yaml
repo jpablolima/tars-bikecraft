@@ -31,7 +31,7 @@ jobs:
           branch: feature
       
       - name: Check Outputs
-        # if: ${{ steps.cpr.outputs.pull-request-number }}
+        if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
@@ -46,6 +46,7 @@ jobs:
            project-name: TarsBikeCraft
            column-name:  TarsBikeCraft
            issue-number: ${{ steps.cpr.outputs.pull-request-number }}
+        
 
 
 
