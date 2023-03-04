@@ -31,7 +31,7 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: Update Tars Bike Craft
           body:  Update Tars Bike Craft
-          branch: feature
+          branch: main
       
       - name: Check Outputs
         # if: ${{ steps.cpr.outputs.pull-request-number }}
