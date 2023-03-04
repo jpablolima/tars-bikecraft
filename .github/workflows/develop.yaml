@@ -39,13 +39,7 @@ jobs:
           echo "Pull Request SHA - ${{ steps.cpr.outputs.pull-request-head-sha }}" 
    
                  
-      - name: Create or Update Project Card
-        #if: ${{ steps.cpr.outputs.pull-request-number }}
-        uses: peter-evans/create-or-update-project-card@v2
-        with:
-           project-name: TarsBikeCraft
-           column-name:  TarsBikeCraft
-           issue-number: ${{ steps.cpr.outputs.pull-request-number }}
+
         
 
 
