@@ -67,8 +67,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME  }}/apache2tarsbikecraft:latest
         
-      - name: Outputs
-        run: echo "${{ steps.result.outputs.result }}:latest"
+      # - name: Outputs
+      #   run: echo "${{ steps.result.outputs.result }}:latest"
 
           
       
