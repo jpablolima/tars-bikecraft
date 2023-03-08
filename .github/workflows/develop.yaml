@@ -8,7 +8,7 @@ on:
 jobs:
   CreatePullRequest:
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
             runner: [ ubuntu-latest ]
     runs-on: ${{  matrix.runner }}
@@ -19,14 +19,22 @@ jobs:
         uses: rlespinasse/git-commit-data-action@v1
       
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: "develop"
-          base: feature
-          title: Auto Pull Request
-          committer: ${{  env.GIT_COMMIT_AUTHOR_NAME  }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
-          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
-          body: 
-              Automatic Pull Request
-          token: ${{ secrets.GIT_TOKEN }}
-          # delete-branch: false
+          token: ${{ secrets.GIT_TOKEN  }}
+          commit-message: Create Pull Request
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: Update Tars Bike Craft
+          body:  Update Tars Bike Craft
+          branch: feature
+      
+      - name: Check Outputs
+        # if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
+          echo "Pull Request Operation - ${{ steps.cpr.outputs.pull-request-operation }}" 
+          echo "Pull Request SHA - ${{ steps.cpr.outputs.pull-request-head-sha }}" 
+   
