@@ -1,0 +1,23 @@
+name: Create Pull Request
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  CreatePullRequest:
+    strategy:
+      fail-fast: true
+      matrix:
+            runner: [ ubuntu-latest ]
+    runs-on: ${{ matrix.runner  }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          base: feature
+          token: ${{ secrets.GIT_TOKEN }}
