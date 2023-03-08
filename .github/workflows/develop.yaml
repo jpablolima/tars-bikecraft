@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - develop 
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   CreatePullRequest:
@@ -28,13 +31,6 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           title: Update Tars Bike Craft
           body:  Update Tars Bike Craft
-          branch: feature
-      
-      - name: Check Outputs
-        # if: ${{ steps.cpr.outputs.pull-request-number }}
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}" 
-          echo "Pull Request Operation - ${{ steps.cpr.outputs.pull-request-operation }}" 
-          echo "Pull Request SHA - ${{ steps.cpr.outputs.pull-request-head-sha }}" 
+          branch: main
    
+  
