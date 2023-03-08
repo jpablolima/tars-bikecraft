@@ -16,6 +16,8 @@ spec:
         containers:
           - name: tarsbike 
             image: jpablolima/apache2tarsbikecraft:latest
+            ports:
+              - containerPort: 80
             # resources:
             #   limits:
             #     memory: 512Mi
