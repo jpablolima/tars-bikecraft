@@ -27,7 +27,12 @@ jobs:
             :crown: *Update and automated PR*
           github_token: ${{  secrets.GIT_TOKEN  }}
 
+    
       - name: Outputs
-        run: echo ${{steps.open-pr.outputs.pr_url}}
+        run: echo ${{ steps.open-pr.outputs.pr_url  }}
+      - name: output-number
+        run: echo ${{steps.open-pr.outputs.pr_number}}
       - name: output-created
-        run: echo ${{steps.open-pr.outputs.pr_created}}
+        run: echo ${{ steps.open-pr.outputs.pr_created  }}
+      - name: output-has-changed-files
+        run: echo ${{steps.open-pr.outputs.has_changed_files}}
