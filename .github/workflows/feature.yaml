@@ -1,23 +1,53 @@
 name: Create Pull Request
 
-on:
-  push:
+on: 
+  push: 
     branches:
-      - develop
+      - "develop"
 
 jobs:
   CreatePullRequest:
     strategy:
       fail-fast: true
       matrix:
-            runner: [ ubuntu-latest ]
-    runs-on: ${{ matrix.runner  }}
+        runner: [ ubuntu-latest ]
+    runs-on: ${{  matrix.runner }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+      - name: Run the Action
+        uses: devops-infra/action-pull-request@v0.5.5
         with:
-          branch: feature
-          token: ${{ secrets.GIT_TOKEN }}
+          github_token: ${{ secrets.GIT_TOKEN }}
+          source_branch: develop
+          target_branch: main
+          title: My pull request
+          body: "Pull Request"
+
+
+
+
+# name: Create Pull Request
+
+# on:
+#   push:
+#     branches:
+#       - develop
+
+# jobs:
+#   CreatePullRequest:
+#     strategy:
+#       fail-fast: true
+#       matrix:
+#             runner: [ ubuntu-latest ]
+#     runs-on: ${{ matrix.runner  }}
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+
+#       - name: Create Pull Request
+#         uses: peter-evans/create-pull-request@v4
+#         with:
+#           branch: feature
+#           token: ${{ secrets.GIT_TOKEN }}
