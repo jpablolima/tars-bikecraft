@@ -1,64 +1,33 @@
 name: Create Pull Request
 
-on: 
-  push: 
+on:
+  push:
     branches:
       - "develop"
 
 jobs:
-  CreatePullRequest:
+  CreatePullReques:
     strategy:
       fail-fast: true
-      matrix:
+      matrix: 
         runner: [ ubuntu-latest ]
     runs-on: ${{  matrix.runner }}
+
     steps:
-      - name: Checkout
+      - name: Checkout repo
+        id: open-pr
         uses: actions/checkout@v3
 
-      - name: Run the Action
-        uses: devops-infra/action-pull-request@v0.5.5
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
         with:
-          github_token: ${{ secrets.GIT_TOKEN }}
-          source_branch: develop
-          target_branch: fueture
-          title: My pull request
-          template: .github/PULL_REQUEST_TEMPLATE.md
-          body: "Pull Request"
-          reviewer: octocat
-          assignee: octocat
-          label: enhancement
-          milestone: My milestone
-          draft: true
-          old_string: "<!-- Add your description here -->"
-          new_string: "** Automatic pull request**"
-          get_diff: true
-          ignore_users: "dependabot"
-          allow_no_diff: false
+          pr_title: "Merge branch 'develop' into feature"
+          destination_branch: feature
+          pr_body: |
+            :crown: *Update and automated PR*
+          github_token: ${{  secrets.TOKEN }}
 
-
-
-
-# name: Create Pull Request
-
-# on:
-#   push:
-#     branches:
-#       - develop
-
-# jobs:
-#   CreatePullRequest:
-#     strategy:
-#       fail-fast: true
-#       matrix:
-#             runner: [ ubuntu-latest ]
-#     runs-on: ${{ matrix.runner  }}
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-
-#       - name: Create Pull Request
-#         uses: peter-evans/create-pull-request@v4
-#         with:
-#           branch: feature
-#           token: ${{ secrets.GIT_TOKEN }}
+      - name: Outputs
+        run: echo ${{steps.open-pr.outputs.pr_url}}
+      - name: output-created
+        run: echo ${{steps.open-pr.outputs.pr_created}}
