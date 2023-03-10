@@ -3,10 +3,7 @@ name: Create Pull Request
 on:
   push:
     branches:
-      - "feature"
-  pull_request:
-    branches: 
-      - feature
+      - "develop"
 
 jobs:
   CreatePullReques:
@@ -24,8 +21,8 @@ jobs:
         id: open-pr
         uses: repo-sync/pull-request@v2
         with:
-          pr_title: "Merge branch 'feature' into main"
-          destination_branch: main
+          pr_title: "Merge branch 'develop' into feature"
+          destination_branch: feature
           pr_body: |
             :crown: *Update and automated PR*
           github_token: ${{  secrets.GIT_TOKEN  }}
