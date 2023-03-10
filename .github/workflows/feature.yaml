@@ -25,7 +25,7 @@ jobs:
           destination_branch: feature
           pr_body: |
             :crown: *Update and automated PR*
-          github_token: ${{  secrets.TOKEN }}
+          github_token: ${{  secrets.GIT_TOKEN  }}
 
       - name: Outputs
         run: echo ${{steps.open-pr.outputs.pr_url}}
