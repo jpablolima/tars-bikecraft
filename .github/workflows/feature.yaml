@@ -21,7 +21,7 @@ jobs:
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
           source_branch: develop
-          target_branch: main
+          target_branch: fueture
           title: My pull request
           template: .github/PULL_REQUEST_TEMPLATE.md
           body: "Pull Request"
