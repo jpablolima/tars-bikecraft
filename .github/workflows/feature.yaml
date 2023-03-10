@@ -3,21 +3,36 @@ name: Create Pull Request
 on:
   push:
     branches:
-      - develop
+      - "develop"
 
 jobs:
-  CreatePullRequest:
+  CreatePullReques:
     strategy:
       fail-fast: true
-      matrix:
-            runner: [ ubuntu-latest ]
-    runs-on: ${{ matrix.runner  }}
+      matrix: 
+        runner: [ ubuntu-latest ]
+    runs-on: ${{  matrix.runner }}
+
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        id: open-pr
+        uses: repo-sync/pull-request@v2
         with:
-          branch: feature
-          token: ${{ secrets.GIT_TOKEN }}
+          pr_title: "Merge branch 'develop' into feature"
+          destination_branch: feature
+          pr_body: |
+            :crown: *Update and automated PR*
+          github_token: ${{  secrets.GIT_TOKEN  }}
+
+    
+      - name: Outputs
+        run: echo ${{ steps.open-pr.outputs.pr_url  }}
+      - name: output-number
+        run: echo ${{steps.open-pr.outputs.pr_number}}
+      - name: output-created
+        run: echo ${{ steps.open-pr.outputs.pr_created  }}
+      - name: output-has-changed-files
+        run: echo ${{steps.open-pr.outputs.has_changed_files}}
