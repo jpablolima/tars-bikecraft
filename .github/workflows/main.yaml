@@ -33,7 +33,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME  }}/apache2tarsbikecraft:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME  }}/apache2tarsbikecraft:1.0.0
         
       # - name: Outputs
       #   run: echo "${{ steps.result.outputs.result }}:latest"
