@@ -15,6 +15,5 @@ spec:
       containers:
       - name: webserver
         image: jpablolima/apache2tarsbikecraft:1.1.1
-        ports:
-          - containerPort: 80
+      
         
