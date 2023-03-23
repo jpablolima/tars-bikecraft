@@ -1,0 +1,35 @@
+---
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: service-tarsbike-craft
+spec:
+  selector:
+    app: tarsbike-craft
+  ports:
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-tarsbike-craft
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tarsbike-craft
+  template:
+    metadata:
+      labels:
+        app: tarsbike-craft
+    spec:
+      containers:
+      - name: webserver
+        image: jpablolima/apache2tarsbikecraft:1.1.1
+      
+        
