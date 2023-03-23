@@ -136,4 +136,10 @@
 		padding: 0px;
 	}
 
+	/* contatos */
+	.contato-form {
+		padding-right: 0px;
+		margin-bottom: 40px;
+	}
+
 }
