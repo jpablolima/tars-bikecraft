@@ -52,10 +52,20 @@
 	.header_menu ul li a:hover {
 		border-color: #fff;
 	}
+	.header_menu ul li a.menu-ativo {
+		border-color: #FFF;
+	  }
+	  
 	.introducao {
 		margin-top: 0;
 		padding-top: 20px;
 	}
+
+	.introducao-interna {
+		margin-top: 0px;
+	}
+
+
 	.introducao h1 {
 		font-size: 38px;
 	}
@@ -64,6 +74,16 @@
 	}
 	.qualidade:after{
 		display: none;
+	}
+
+	.missao-sobre p {
+		font-size: 14px;
+		line-height: 20px;
+		padding-right: 0px;
+	}
+	.missao-sobre ul li {
+		font-size: 14px;
+		line-height: 30px;
 	}
 
 }
