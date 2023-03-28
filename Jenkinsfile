@@ -17,9 +17,15 @@ pipeline {
                
             }
         }
-        stage("Deploy") {
+        stage("Remove Container") {
+            steps{
+                 sh "docker run --rm jpablolima/apache2tarsbikecraft:1.2.0"
+            }
+        }
+        stage("Deploy new Container"){
             steps{
                  sh "docker run --rm -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
+            }
             }
         }
 
