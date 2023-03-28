@@ -14,6 +14,12 @@ pipeline {
         stage("Build Docker Image") {
             steps{
                 sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
+               
+            }
+        }
+        stage("Deploy") {
+            steps{
+                 sh "docker run  --name tarsbikecraft -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
             }
         }
 
