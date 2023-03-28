@@ -14,8 +14,24 @@ pipeline {
         stage("Build Docker Image") {
             steps{
                 sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
+               
             }
         }
+        stage("Stop Container") {
+            steps{
+                sh 'docker ps -f name=tarsbike -q | xargs --no-run-if-empty docker container stop'
+            }
+        }
+        stage("Start Container"){
+            steps{
+                sh "docker start tarsbike"
+           }
+         }
+        // stage("Deploy new Container"){
+        //     steps{
+        //          sh "docker run --name tarsbike -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
+        //     }
+        //     }
+        }
 
-    }
 }
