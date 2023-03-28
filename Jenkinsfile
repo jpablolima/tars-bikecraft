@@ -19,7 +19,7 @@ pipeline {
         }
         stage("Deploy") {
             steps{
-                 sh "docker run --rm -d  --name tarsbikecraft -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
+                 sh "docker run --rm -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
             }
         }
 
