@@ -5,7 +5,7 @@ pipeline {
             steps {
                 git(
                     url: "https://github.com/jpablolima/tars-bikecraft.git",
-                    branch: "master",
+                    branch: "develop",
                     changelog: true,
                     poll: true
                 )
