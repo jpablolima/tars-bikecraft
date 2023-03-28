@@ -22,11 +22,16 @@ pipeline {
                 sh 'docker ps -f name=tarsbike -q | xargs --no-run-if-empty docker container stop'
             }
         }
-        stage("Deploy new Container"){
+        stage("Start Container"){
             steps{
-                 sh "docker run --name tarsbike -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
-            }
-            }
+                sh "docker start tarsbike"
+           }
+         }
+        // stage("Deploy new Container"){
+        //     steps{
+        //          sh "docker run --name tarsbike -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
+        //     }
+        //     }
         }
 
 }
