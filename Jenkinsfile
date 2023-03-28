@@ -1,7 +1,7 @@
 pieline {
     agent any
     stages {
-        stage('Clone') {
+        stage("Clone") {
             steps {
                 git( 
                         url:"https://github.com/jpablolima/tars-bikecraft.git", 
