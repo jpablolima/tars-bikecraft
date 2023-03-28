@@ -1,19 +1,15 @@
-pieline {
+pipeline {
     agent any
     stages {
-        stage("Clone") {
+        stage("Clone Git Repository") {
             steps {
-                git( 
-                        url:"https://github.com/jpablolima/tars-bikecraft.git", 
-                        branch:"develop",
-                        changelog:true,
-                        poll:true
-                 
-                 )
+                git(
+                    url: "https://github.com/jpablolima/tars-bikecraft.git",
+                    branch: "master",
+                    changelog: true,
+                    poll: true
+                )
             }
-
         }
-        
     }
-    
 }
