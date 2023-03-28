@@ -19,7 +19,7 @@ pipeline {
         }
         stage("Remove Container") {
             steps{
-                 sh "docker run --rm jpablolima/apache2tarsbikecraft:1.2.0"
+                 sh "docker run -d --rm jpablolima/apache2tarsbikecraft:1.2.0"
             }
         }
         stage("Deploy new Container"){
