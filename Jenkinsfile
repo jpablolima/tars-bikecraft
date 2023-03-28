@@ -1,20 +1,15 @@
 pieline {
     agent any
-
     stages {
-        stage('Checkout') {
-            steps{
+        stage('Clone') {
+            steps {
                 echo "Checkout Repo"
-                sh "git clone https://github.com/jpablolima/tars-bikecraft.git"
+                git url: 'https://github.com/jpablolima/tars-bikecraft.git', branch: 'develop'
+                
             }
 
         }
-        stage('Build') {
-            steps{
-                echo "Build Image"
-                sh "docker build -t tars ."
-            }
-        }
+        
     }
     
 }
