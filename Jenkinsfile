@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        IMAGE='jpablolima/apache2tarsbikecraft:1.2.0',
-        URL='http://localhost:8181/'
+        IMAGE   =  'jpablolima/apache2tarsbikecraft:1.2.0'
+        URL     =  'http://localhost:8181/'
     }
 
     stages {
