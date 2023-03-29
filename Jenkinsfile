@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE='jpablolima/apache2tarsbikecraft:1.2.0'
+        URL='http://localhost:8181/'
     }
 
     stages {
@@ -50,7 +51,16 @@ pipeline {
         }
         stage("Output") {
             steps{
+                echo "URL container run: ${URL}"
                 echo "GIT_COMMIT ${GIT_COMMIT}"
+                echo "Build URL ${BUILD_URL}"
+                echo "Docker Image ${IMAGE}"
+                echo "Workspace ${WORKSPACE}"
+                echo "Git Branch ${GIT_BRANCH}"
+                echo "Build Number ${BUILD_ID}"
+                echo "Job Name ${JOB_NAME}"
+                
+
             }
         }
     }
