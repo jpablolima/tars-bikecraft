@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        IMAGE='jpablolima/apache2tarsbikecraft:1.2.0'
+    }
 
     stages {
         stage ("Checkout"){
@@ -20,11 +23,11 @@ pipeline {
         stage("Check if Docker Image exists"){
             steps{
                 script {
-                    def output = sh (script: 'docker images jpablolima/apache2tarsbikecraft:1.2.0', returnStdout: true).trim()
+                    def output = sh (script: 'docker images ${IMAGE}', returnStdout: true).trim()
                    
-                    if (output.contains("jpablolima/apache2tarsbikecraft:1.2.0")) {
+                    if (output.contains("${IMAGE}")) {
                         echo "Imagem existe...Removendo!"
-                        sh 'docker rmi jpablolima/apache2tarsbikecraft:1.2.0'
+                        sh 'docker rmi ${IMAGE}'
 
                     } else {
                        echo "Imagem não existe!"
@@ -34,8 +37,8 @@ pipeline {
         }
        stage("Build new Image") {
             steps {
-                sh "docker rmi $(docker images --filter “dangling=true” -q --no-trunc)b"
-                sh "docker  build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
+                
+                sh "docker  build -t ${IMAGE} ."
             }
         }
         // stage("Run Image"){
