@@ -34,7 +34,8 @@ pipeline {
         }
        stage("Build new Image") {
             steps {
-                sh "docker --rm build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
+                sh "docker rmi $(docker images --filter “dangling=true” -q --no-trunc)b"
+                sh "docker  build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
             }
         }
         // stage("Run Image"){
