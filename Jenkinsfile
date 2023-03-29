@@ -18,7 +18,7 @@ pipeline {
         stage("Remove Container") {
             steps{
                 sh "docker rm -f tarsbike"
-                sh "Git Commit ${GIT_COMMIT}"
+                
             }
         }
         stage("Check if Docker Image exists"){
@@ -46,6 +46,11 @@ pipeline {
             steps {
                 sh "docker run --name tarsbike -d -p 8181:80 ${IMAGE}"
                 
+            }
+        }
+        stage("Output") {
+            steps{
+                echo "GIT_COMMIT ${GIT_COMMIT}"
             }
         }
     }
