@@ -5,7 +5,7 @@ pipeline {
             stage("Build") {
                 steps{
                     checkout scm
-                    sh "docker build -t tarsbike ." 
+                    sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ." 
                 }
             }
         }
