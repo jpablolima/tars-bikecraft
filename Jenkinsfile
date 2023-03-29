@@ -59,8 +59,6 @@ pipeline {
                 echo "Git Branch ${GIT_BRANCH}"
                 echo "Build Number ${BUILD_ID}"
                 echo "Job Name ${JOB_NAME}"
-                
-
             }
         }
     }
