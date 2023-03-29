@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ("Checkiut"){
+        stage ("Checkout"){
             steps {
                 git(
                     url: "https://github.com/jpablolima/tars-bikecraft.git",
