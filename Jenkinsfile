@@ -21,17 +21,23 @@ pipeline {
             steps{
                 script {
                     def output = sh (script: "docker images jpablolima/apache2tarsbikecraft:1.2.0", returnStdout: true).trim()
-                    echo "Imagem existe!"
-                    echo "Removendo imagem!"
-                    sh "docker rmi jpablolima/apache2tarsbikecraft:1.2.0"
+                   
+                    if(output.contains("jpablolima/apache2tarsbikecraft:1.2.0")) {
+                        echo "Imagem existe!"
+                        echo "Imagem será removida!"
+                        sh "docker rmi jpablolima/apache2tarsbikecraft:1.2.0"
+
+                    } else {
+                        echo "Imagem não existe!"
+                    }
                 }
             }
         }
-       stage("Build new Image") {
-            steps {
-                sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
-            }
-        }
+    //    stage("Build new Image") {
+    //         steps {
+    //             sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
+    //         }
+    //     }
         // stage("Run Image"){
         //     steps {
         //         sh "docker run --name tarsbike -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
