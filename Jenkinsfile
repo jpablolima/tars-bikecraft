@@ -22,6 +22,8 @@ pipeline {
                 script {
                     def output = sh (script: "docker images jpablolima/apache2tarsbikecraft:1.2.0", returnStdout: true).trim()
                     echo "Imagem existe!"
+                    echo "Removendo imagem!"
+                    sh "docker rmi jpablolima/apache2tarsbikecraft:1.2.0"
                 }
             }
         }
