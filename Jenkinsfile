@@ -17,11 +17,11 @@ pipeline {
                 sh "docker rm -f tarsbike"
             }
         }
-        // stage("Remove image") {
-        //     steps {
-        //         sh "docker rmi jpablolima/apache2tarsbikecraft:1.2.0 "
-        //     }
-        // }
+        stage("Remove image") {
+            steps {
+                sh "docker rmi jpablolima/apache2tarsbikecraft:1.2.0 "
+            }
+        }
 
         // stage("Build new Image") {
         //     steps {
