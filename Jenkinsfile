@@ -1,7 +1,12 @@
 pipeline {
     agent any
+    environment {
+        IMAGE   =  'jpablolima/apache2tarsbikecraft:1.2.0'
+        URL_CONTAINER     =  'http://localhost:8181/'
+    }
+
     stages {
-        stage("Clone Git Repository") {
+        stage ("Checkout"){
             steps {
                 git(
                     url: "https://github.com/jpablolima/tars-bikecraft.git",
@@ -11,27 +16,50 @@ pipeline {
                 )
             }
         }
-        stage("Build Docker Image") {
+        stage("Remove Container") {
             steps{
-                sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
-               
+                sh "docker rm -f tarsbike"
+                
             }
         }
-        stage("Stop Container") {
+        stage("Check if Docker Image exists"){
             steps{
-                sh 'docker ps -f name=tarsbike -q | xargs --no-run-if-empty docker container stop'
-            }
-        }
-        stage("Start Container"){
-            steps{
-                sh "docker start tarsbike"
-           }
-         }
-        // stage("Deploy new Container"){
-        //     steps{
-        //          sh "docker run --name tarsbike -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
-        //     }
-        //     }
-        }
+                script {
+                    def output = sh (script: 'docker images ${IMAGE}', returnStdout: true).trim()
+                   
+                    if (output.contains("${IMAGE}")) {
+                        echo "Imagem existe...Removendo!"
+                        sh 'docker rmi ${IMAGE}'
 
+                    } else {
+                       echo "Imagem não existe!"
+                    }
+                }
+            }
+        }
+       stage("Build new Image") {
+            steps {
+                
+                sh "docker  build -t ${IMAGE} ."
+            }
+        }
+        stage("Run Image"){
+            steps {
+                sh "docker run --name tarsbike -d -p 8181:80 ${IMAGE}"
+                
+            }
+        }
+        stage("Output") {
+            steps{
+                echo "URL container run: ${URL_CONTAINER}"
+                echo "GIT_COMMIT ${GIT_COMMIT}"
+                echo "Build URL ${BUILD_URL}"
+                echo "Docker Image ${IMAGE}"
+                echo "Workspace ${WORKSPACE}"
+                echo "Git Branch ${GIT_BRANCH}"
+                echo "Build Number ${BUILD_ID}"
+                echo "Job Name ${JOB_NAME}"
+            }
+        }
+    }
 }

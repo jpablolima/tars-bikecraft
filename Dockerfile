@@ -9,3 +9,4 @@ LABEL description="WebServer"
 EXPOSE 80
 
 RUN ls -la /usr/local/apache2/htdocs/
+
