@@ -20,12 +20,11 @@ pipeline {
         stage("Check if Docker Image exists"){
             steps{
                 script {
-                    def output = sh (script: "docker images jpablolima/apache2tarsbikecraft:1.2.0", returnStdout: true).trim()
+                    def output = sh (script: 'docker images jpablolima/apache2tarsbikecraft:1.2.0', returnStdout: true).trim()
                    
-                    if(output.contains("jpablolima/apache2tarsbikecraft:1.2.0")) {
-                        echo "Imagem existe!"
-                        echo "Imagem será removida!"
-                        sh "docker rmi jpablolima/apache2tarsbikecraft:1.2.0"
+                    if (output.contains("jpablolima/apache2tarsbikecraft:1.2.0")) {
+                        echo "Imagem existe...Removendo!"
+                        sh 'docker rmi jpablolima/apache2tarsbikecraft:1.2.0'
 
                     } else {
                         echo "Imagem não existe!"
