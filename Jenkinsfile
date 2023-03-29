@@ -18,7 +18,7 @@ pipeline {
         stage("Remove Container") {
             steps{
                 sh "docker rm -f tarsbike"
-                sh "printenv"
+                sh "Git Commit ${GIT_COMMIT}"
             }
         }
         stage("Check if Docker Image exists"){
