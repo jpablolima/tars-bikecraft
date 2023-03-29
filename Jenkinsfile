@@ -33,11 +33,11 @@ pipeline {
                 }
             }
         }
-    //    stage("Build new Image") {
-    //         steps {
-    //             sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
-    //         }
-    //     }
+       stage("Build new Image") {
+            steps {
+                sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
+            }
+        }
         // stage("Run Image"){
         //     steps {
         //         sh "docker run --name tarsbike -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
