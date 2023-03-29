@@ -34,7 +34,7 @@ pipeline {
         }
        stage("Build new Image") {
             steps {
-                sh "docker build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
+                sh "docker --rm build -t jpablolima/apache2tarsbikecraft:1.2.0 ."
             }
         }
         // stage("Run Image"){
