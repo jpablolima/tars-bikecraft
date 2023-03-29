@@ -18,6 +18,7 @@ pipeline {
         stage("Remove Container") {
             steps{
                 sh "docker rm -f tarsbike"
+                sh "printenv"
             }
         }
         stage("Check if Docker Image exists"){
@@ -43,7 +44,8 @@ pipeline {
         }
         stage("Run Image"){
             steps {
-                sh "docker run --name tarsbike -d -p 8181:80 jpablolima/apache2tarsbikecraft:1.2.0"
+                sh "docker run --name tarsbike -d -p 8181:80 ${IMAGE}"
+                
             }
         }
     }
