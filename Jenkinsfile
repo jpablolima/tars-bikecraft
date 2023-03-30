@@ -6,7 +6,17 @@ pipeline {
         BRANCH="dev"
 
    }
-
+    stages {
+        stage ("Checkout"){
+            steps {
+                git(
+                    url: "https://github.com/jpablolima/tars-bikecraft.git",
+                    branch: "${BRANCH}",
+                    changelog: true,
+                    poll: true
+                )
+            }
+        }
          stage("Remove Container") {
             steps{
                 sh "docker rm -f tarsbike"
