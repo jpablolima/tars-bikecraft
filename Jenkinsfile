@@ -2,12 +2,17 @@ pipeline {
     agent any
         stages{
             stage("checkout"){
-                docker {
+                agent {
+                 docker {
                     image 'httpd:2.4 '
                 }
             }
-            
+            steps {
+                sh 'run..'
+            }
+               
         }
+    }
  }
 
 // pipeline {
