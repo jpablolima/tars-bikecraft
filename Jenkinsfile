@@ -1,15 +1,17 @@
 pipeline {
-    agent {
-        dockerfile true
-    }
+    agent any
+
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t  jpablolima/apache2tarsbikecraft:1.2.0 .'
+                script {
+                    def dockerImage = docker.build('tars')
+                }
             }
         }
     }
 }
+
 
 // pipeline {
 //     agent any
