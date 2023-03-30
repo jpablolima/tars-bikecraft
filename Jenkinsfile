@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'node:16.13.1-alpine' }
+        docker { image 'httpd:2.4' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'httpd --version'
             }
         }
     }
