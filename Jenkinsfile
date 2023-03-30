@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'httpd:2.4' }
+        dockerfile true
     }
     stages {
         stage('Build') {
