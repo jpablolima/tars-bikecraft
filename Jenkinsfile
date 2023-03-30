@@ -3,9 +3,9 @@ pipeline {
         docker { image 'httpd:2.4' }
     }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh 'httpd --version'
+                sh 'jpablolima/apache2tarsbikecraft:1.2.0 .'
             }
         }
     }
