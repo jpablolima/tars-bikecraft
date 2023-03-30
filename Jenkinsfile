@@ -1,38 +1,30 @@
 pipeline {
     agent any
+    environment {
+        IMAGE   =  'jpablolima/apache2tarsbikecraft:1.2.0'
+        URL_CONTAINER     =  'http://localhost:8181/'
+        BRANCH="dev"
+
+   }
 
     stages {
-        stage('Build') {
+        stage ("Checkout"){
             steps {
-                script {
-                    def dockerImage = docker.build('tars')
-                }
+                git(
+                    url: "https://github.com/jpablolima/tars-bikecraft.git",
+                    branch: "${BRANCH}",
+                    changelog: true,
+                    poll: true
+                )
             }
         }
-    }
+        stage("Build"){
+            steps{
+                sh "docker build -t tars/tars ."
+            }
+        }
+    }   
 }
-
-
-// pipeline {
-//     agent any
-//     environment {
-//         IMAGE   =  'jpablolima/apache2tarsbikecraft:1.2.0'
-//         URL_CONTAINER     =  'http://localhost:8181/'
-//         BRANCH="dev"
-
-//    }
-
-//     stages {
-//         stage ("Checkout"){
-//             steps {
-//                 git(
-//                     url: "https://github.com/jpablolima/tars-bikecraft.git",
-//                     branch: "${BRANCH}",
-//                     changelog: true,
-//                     poll: true
-//                 )
-//             }
-//         }
 //         stage("Remove Container") {
 //             steps{
 //                 sh "docker rm -f tarsbike"
