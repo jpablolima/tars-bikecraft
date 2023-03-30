@@ -52,5 +52,5 @@ pipeline {
                 echo "Job Name ${JOB_NAME}"
             }
         }
-    }
 }
+
