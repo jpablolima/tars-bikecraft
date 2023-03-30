@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t jpablolima/apache2tarsbikecraft:1.2.0 .'
+                sh 'docker build -t  jpablolima/apache2tarsbikecraft:1.2.0 .'
             }
         }
     }
