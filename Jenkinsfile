@@ -7,11 +7,12 @@ pipeline {
                     image 'httpd:2.4 '
                 }
             }
-            steps {
-                sh 'run..'
-            }
-               
         }
+            stage("Build Image") {
+                steps{
+                    sh 'docker  build -t jpablolima/apache2tarsbikecraft:1.2.0 .'
+                }
+            }
     }
  }
 
