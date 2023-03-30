@@ -1,20 +1,15 @@
 pipeline {
-    agent any
-        stages{
-            stage("checkout"){
-                agent {
-                 docker {
-                    image 'httpd:2.4 '
-                }
+    agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
             }
         }
-            stage("Build Image") {
-                steps{
-                    sh 'docker  build -t jpablolima/apache2tarsbikecraft:1.2.0 .'
-                }
-            }
     }
- }
+}
 
 // pipeline {
 //     agent any
