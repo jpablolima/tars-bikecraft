@@ -6,9 +6,7 @@ pipeline {
                     image 'httpd:2.4 '
                 }
             }
-            steps{
-                sh "image"
-            }
+            
         }
  }
 
