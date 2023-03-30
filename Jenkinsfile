@@ -1,5 +1,5 @@
 pipeline {
-    agent any{
+    agent any
         stages{
             stage("checkout"){
                 docker {
@@ -10,9 +10,7 @@ pipeline {
                 sh "image"
             }
         }
-    }
-}
-
+ }
 
 // pipeline {
 //     agent any
