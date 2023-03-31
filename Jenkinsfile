@@ -4,7 +4,8 @@ pipeline {
         IMAGE   =  'jpablolima/apache2tarsbikecraft:1.2.0'
         URL_CONTAINER     =  'http://localhost:8181/'
         BRANCH="develop"
-    }
+
+   }
 
     stages {
         stage ("Checkout"){
