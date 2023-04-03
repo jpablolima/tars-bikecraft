@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        IMAGE   =  'jpablolima/apache2tarsbikecraft:1.2.0'
+        CONTAINER   =  'tarsbike'
         URL_CONTAINER     =  'http://localhost:8181/'
-        BRANCH="develop"
+        BRANCH="dev"
 
    }
 
@@ -18,36 +18,26 @@ pipeline {
                 )
             }
         }
-        stage("Remove Container") {
+        stage("Build imagem...") {
             steps{
-                sh "docker rm -f tarsbike"
+                sh "docker build -t ${CONTAINER} ."
                 
             }
         }
-        stage("Check if Docker Image exists"){
+        stage("Check if Container exists"){
             steps{
-                script {
-                    def output = sh (script: 'docker images ${IMAGE}', returnStdout: true).trim()
-                   
-                    if (output.contains("${IMAGE}")) {
-                        echo "Imagem existe...Removendo!"
-                        sh 'docker rmi ${IMAGE}'
-
-                    } else {
-                       echo "Imagem não existe!"
-                    }
-                }
-            }
+                sh "docker ps --filter "name=${CONTAINER}"
+            
         }
-       stage("Build new Image") {
+       stage("Remove Container") {
             steps {
                 
-                sh "docker  build -t ${IMAGE} ."
+                sh "docker rm -f ${CONTAINER} "
             }
         }
         stage("Run Image"){
             steps {
-                sh "docker run --name tarsbike -d -p 8181:80 ${IMAGE}"
+                sh "docker run --name tarsbike -d -p 8181:80 ${CONTAINER}"
                 
             }
         }
@@ -56,11 +46,12 @@ pipeline {
                 echo "URL container run: ${URL_CONTAINER}"
                 echo "GIT_COMMIT ${GIT_COMMIT}"
                 echo "Build URL ${BUILD_URL}"
-                echo "Docker Image ${IMAGE}"
+                echo "Docker Container ${CONTAINER}"
                 echo "Workspace ${WORKSPACE}"
                 echo "Git Branch ${GIT_BRANCH}"
                 echo "Build Number ${BUILD_ID}"
                 echo "Job Name ${JOB_NAME}"
+                }
             }
         }
     }
