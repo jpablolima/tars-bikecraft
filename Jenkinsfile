@@ -26,7 +26,7 @@ pipeline {
         }
         stage("Check if Container exists"){
             steps{
-                sh "docker ps --filter "name=${CONTAINER}"
+                sh "docker ps --filter 'name=${CONTAINER}'"
             
         }
        stage("Remove Container") {
